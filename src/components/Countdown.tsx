@@ -15,6 +15,7 @@ const Countdown = () => {
     const [seconds, setSeconds] = useState(initialSeconds);
     const [totalSeconds, setTotalSeconds] = useState(initialMinutes * 60);
     const [isRunning, setIsRunning] = useState(false);
+    const [resetClicked, setResetClicked] = useState(false);
 
     const playAudio = () => {
         new Audio(alarm).play();
@@ -43,20 +44,35 @@ const Countdown = () => {
         setMinutes(newMinutes);
         setSeconds(newSeconds);
         setTotalSeconds(newTotalSeconds);
+        setResetClicked(false);
     };
 
     const handleStartPause = () => {
+        if (minutes === 0 && seconds === 0) {
+            return;
+        }
         setIsRunning(prevIsRunning => !prevIsRunning);
+        setResetClicked(false);
     };
 
     const handleReset = () => {
-        setIsRunning(false);
-        setTotalSeconds(0);
-        setInitialMinutes(0);
-        setInitialSeconds(0);
-        setMinutes(initialMinutes);
-        setSeconds(initialSeconds);
+        if (resetClicked || !isRunning) {
+            setIsRunning(false);
+            setTotalSeconds(0);
+            setInitialMinutes(0);
+            setInitialSeconds(0);
+            setMinutes(initialMinutes);
+            setSeconds(initialSeconds);
+        } else {
+            setIsRunning(false);
+            setResetClicked(true);
+        }
     };
+
+    useEffect(() => {
+        setMinutes(Math.floor(totalSeconds / 60));
+        setSeconds(totalSeconds % 60);
+    }, [totalSeconds]);
 
     return (
         <STimer>
