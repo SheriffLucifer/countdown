@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/countdown/static/js/main.44c7914c.js",
+    "main.js": "/countdown/static/js/main.eb88bb90.js",
     "static/media/alarm.wav": "/countdown/static/media/alarm.6422d2d46cb87e8e0045.wav",
     "index.html": "/countdown/index.html",
-    "main.44c7914c.js.map": "/countdown/static/js/main.44c7914c.js.map"
+    "main.eb88bb90.js.map": "/countdown/static/js/main.eb88bb90.js.map"
   },
   "entrypoints": [
-    "static/js/main.44c7914c.js"
+    "static/js/main.eb88bb90.js"
   ]
 }
